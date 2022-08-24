@@ -3,7 +3,6 @@
     "start": "env-cmd -f .env.production node app.js",
     "start:dev": "NODE_ENV=development env-cmd -f .env.development nodemon app.js",
     "start:prod": "env-cmd -f .env.production node app.js",
-    "heroku-postbuild": "cd client && react-scripts build",
     "script:task-steps-objectid-fix": "env-cmd -f .env.production node scripts/task-steps-objectid-fix.js"
   },
   "engines": {
@@ -25,7 +24,6 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.4",
     "mongoose": "^6.3.3",
-    "morgan": "^1.10.0",
-    "react-scripts": "^5.0.1"
+    "morgan": "^1.10.0"
   }
 }
