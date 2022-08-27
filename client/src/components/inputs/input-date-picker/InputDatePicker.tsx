@@ -58,14 +58,16 @@ const InputDatePicker: React.FC<IProps> = ({ name, placeholder, value, disabled,
           options={{
             enableTime: false,
             dateFormat: 'd/F/Y',
-            locale: Turkish
+            locale: Turkish,
+            disableMobile: 'true'
           }}
           disabled={disabled}
           onChange={onValueChange}
           placeholder={placeholder}
           value={value !== '' ? +value : null}
           color={color}
-          style={{ color: color }}
+          style={{ color: color, width: '100%' }}
+          responsive={false}
         />
         <InputIcon color={color}>
           <Clock size={20} />

@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.b40c9786.css",
-    "main.js": "/static/js/main.84d942ad.js",
+    "main.js": "/static/js/main.f52e6cb3.js",
     "static/media/register-background-image.jpg": "/static/media/register-background-image.9420b5717a14572c52be.jpg",
     "static/media/betalent-logo.svg": "/static/media/betalent-logo.891dd4d780bb0e432560d94432a37c55.svg",
     "index.html": "/index.html",
     "main.b40c9786.css.map": "/static/css/main.b40c9786.css.map",
-    "main.84d942ad.js.map": "/static/js/main.84d942ad.js.map"
+    "main.f52e6cb3.js.map": "/static/js/main.f52e6cb3.js.map"
   },
   "entrypoints": [
     "static/css/main.b40c9786.css",
-    "static/js/main.84d942ad.js"
+    "static/js/main.f52e6cb3.js"
   ]
 }
