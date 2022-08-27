@@ -1,10 +1,12 @@
+import { EValidationFiedTypes, IValidationItem } from '../models'
+
 const controlStringLength = (value: string): boolean => {
   const minNum = 6
   const result = value.trim().length >= minNum
   return result
 }
 
-export const isValueNull = (value: string | undefined) => {
+export const isValueNotNull = (value: string | undefined) => {
   if (value) {
     return value.toString().trim().length > 0
   } else {
@@ -51,4 +53,30 @@ export const isPasswordAndConfirmMatch = (password: string, passwordConfirm: str
   const _passwordConfirm = passwordConfirm.trim()
   const result = _password === _passwordConfirm
   return result
+}
+
+export const validateFormFields = (validationOptions: IValidationItem[], validationData: any, callback): boolean => {
+  let tempErrors = {}
+  validationOptions.map(option => {
+    switch (option.fieldType) {
+      case EValidationFiedTypes.STRING:
+        const result = isValueNotNull(validationData[option.fieldName])
+        if (result) {
+          tempErrors[option.fieldName + 'Error'] = false
+        } else {
+          tempErrors[option.fieldName + 'Error'] = true
+        }
+        break
+      case EValidationFiedTypes.EMAIL:
+        break
+      case EValidationFiedTypes.NUMBER:
+        break
+      default:
+        console.log('Validation type not implemented')
+        break
+    }
+  })
+
+  callback(tempErrors)
+  return !Object.values(tempErrors).includes(true)
 }

@@ -1,19 +1,19 @@
 import { useEffect, useMemo } from 'react'
 import { useLogoutMutation, useLoginMutation } from '../services/authService'
-import { selectAccessToken, selectUserId } from '../store'
+// import { selectAccessToken, selectUserId } from '../store'
 import useAccessStore from './useAccessStore'
 
 export const useAuth = () => {
   const { useAppDispatch, useAppSelector } = useAccessStore()
   const dispatch = useAppDispatch()
 
-  const accessToken = useAppSelector(selectAccessToken)
-  const userId = useAppSelector(selectUserId)
+  // const accessToken = useAppSelector(selectAccessToken)
+  // const userId = useAppSelector(selectUserId)
 
-  useEffect(() => {
-    localStorage.setItem('accessToken', accessToken)
-    localStorage.setItem('userId', userId)
-  }, [accessToken, userId])
+  // useEffect(() => {
+  //   localStorage.setItem('accessToken', accessToken)
+  //   localStorage.setItem('userId', userId)
+  // }, [accessToken, userId])
 
   // const {
   //   data: userData,

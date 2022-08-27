@@ -1,13 +1,11 @@
-import { IUser } from '../../models/index';
-
 import { createSlice } from '@reduxjs/toolkit'
 import { IRootState } from '../store'
-import { authApi } from '../../services/authService';
+import { authApi } from '../../services/authService'
 
 type IAuthState = {
   userId: string
   accessToken: string
-  user?: IUser | undefined
+  user?: any | undefined
 }
 
 const authSlice = createSlice({
@@ -42,9 +40,8 @@ export const { logout } = authSlice.actions
 // export const selectUserId = (state: IRootState) => state.auth.userId
 // export const selectAccessToken = (state: IRootState) => state.auth.accessToken
 
-
-export const selectUser = (state: IRootState) => state.user
-export const selectUserId = (state: IRootState) => state.userId
-export const selectAccessToken = (state: IRootState) => state.accessToken
+// export const selectUser = (state: IRootState) => state?.user
+// export const selectUserId = (state: IRootState) => state?.userId
+// export const selectAccessToken = (state: IRootState) => state?.accessToken
 
 export default authSlice.reducer

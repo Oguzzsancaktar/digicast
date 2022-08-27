@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import reducer from './auth/authSlice'
+import reducer from './combineReducers'
+import StoreMiddlewares from './StoreMiddlewares'
 
 const store = configureStore({
   reducer,
-  middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false })
+  middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat(StoreMiddlewares)
 })
 
 type IRootState = ReturnType<typeof store.getState>

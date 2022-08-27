@@ -1,7 +1,5 @@
-import { authApi } from "../services/authService"
+import { registerApi } from '../services/registerService'
 
-const StoreMiddlewares = [
-  authApi.middleware,
-]
+const StoreMiddlewares = [registerApi.middleware]
 
 export default StoreMiddlewares

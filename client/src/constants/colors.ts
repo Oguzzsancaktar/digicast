@@ -15,79 +15,45 @@ export const colorOptions = [
 ]
 
 const colors = Object.freeze({
-  primary: {
-    dark: '#223446',
-    middle: '#243b4b',
-    light: '#274E57'
-  },
-
-  secondary: {
-    dark: '#4d7298',
-    middle: '#a5d9f3',
-    light: '#eff3fe'
-  },
-
-  blue: {
-    primary: '#007bff'
-  },
-  indigo: {
-    primary: '#6610f2'
-  },
-  purple: {
-    primary: '#696cff'
-  },
-  pink: {
-    primary: '#e83e8c'
-  },
-  red: {
-    primary: '#ff3e1d'
-  },
-  orange: {
-    primary: '#fd7e14'
-  },
-  yellow: {
-    primary: '#ffab00'
-  },
-  green: {
-    primary: '#71dd37'
-  },
-  teal: {
-    primary: '#00ADB5',
-    secondary: '#20c997'
-  },
-  cyan: {
-    primary: '#03c3ec'
-  },
   white: {
-    primary: '#EEEEEE',
-    secondary: '#fff',
-    light: '#fcfdfd',
-    bg: '#f5f5f9'
+    dark: '#DEE2E6',
+    middle: '#E9ECEF',
+    light: '#F8F9FA'
   },
+
   gray: {
-    primary: '#393E46',
-    secondary: '#DFDFDE',
-    light: '#435371',
-    middle: '#dedede',
-    dark: '#435971',
-    disabled: '#dddddd'
+    dark: '#6C757D',
+    middle: '#ADB5BD',
+    light: '#CED4DA'
   },
 
   black: {
-    primary: '#222831',
-    secondary: '#233446',
-    dark: '#436571',
-    middle: '#434971',
-    light: '#697a8d'
+    dark: '#212529',
+    middle: '#343A40',
+    light: '#495057'
   },
-  text: {
-    primary: '#566a7f'
+
+  primary: {
+    dark: '#892b64',
+    middle: '#a01a58',
+    light: '#b7094c'
   },
-  background: {
-    gray: {
-      light: '#f5f5f9',
-      dark: '#433471'
-    }
+
+  secondary: {
+    dark: '#2e6f95',
+    middle: '#1780a1',
+    light: '#0091ad'
+  },
+
+  thirth: {
+    dark: '#006400',
+    middle: '#008000',
+    light: '#38b000'
+  },
+  fourth: {
+    dark: '#800016',
+    middle: '#a0001c',
+    light: '#c00021'
   }
 })
 

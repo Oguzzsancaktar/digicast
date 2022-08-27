@@ -1,5 +1,5 @@
-import colors from '@/constants/colors'
 import { createGlobalStyle } from 'styled-components'
+import colors from '../constants/colors'
 
 const GlobalStyle = createGlobalStyle`
 
@@ -111,7 +111,9 @@ textarea {
 
 }
 
-
+input:focus{
+  outline: none;
+}
 button,
 input {
   overflow: visible;

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import { AuthReducer } from './auth'
+import { registerApi } from '../services/registerService'
+// import { AuthReducer } from './auth'
 
 const rootReducer = combineReducers({
-  auth: AuthReducer,
+  // auth: AuthReducer,
+  [registerApi.reducerPath]: registerApi.reducer
 })
 
 export default rootReducer

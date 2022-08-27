@@ -1,4 +1,4 @@
-import { EGender } from '@/models'
+import { EGender } from '../models'
 
 export const genderOptions = [
   { label: EGender.FEMALE, value: '0' },

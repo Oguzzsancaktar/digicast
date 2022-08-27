@@ -1,5 +1,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import type { IRootState, IAppDispatch } from '@store/index'
+import { IAppDispatch, IRootState } from '../store'
 
 const useAppDispatch = () => useDispatch<IAppDispatch>()
 const useAppSelector: TypedUseSelectorHook<IRootState> = useSelector
