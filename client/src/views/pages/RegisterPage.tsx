@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 import {
   Button,
@@ -8,21 +8,20 @@ import {
   InputDatePicker,
   CompanyLogo,
   JustifyBetweenColumn,
-  Image,
   Spinner
 } from '../../components'
 import { Row } from '../../components/shared/layout'
 import colors from '../../constants/colors'
 import { EValidationFiedTypes, IRegister, IValidationItem } from '../../models'
 import { handleDateChange, handleInputChange, handleSelectChange } from '../../utils/handleValueChange'
-import { Gift, Mail, MapPin, PhoneCall, User } from 'react-feather'
+import { Gift, Mail, PhoneCall, User } from 'react-feather'
 import cityOptions from '../../constants/cities'
 import moment from 'moment'
 import { useCreateRegisterMutation } from '../../services/registerService'
 import { validateFormFields } from '../../utils/validationUtils'
 import backgroundImage from '../../assets/images/register-background-image.jpg'
 import Success from '../../components/request-response/Success'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const PageContainer = styled.div`
   background-color: red;
@@ -125,36 +124,39 @@ const RegisterPage: React.FC = () => {
     birthday: ''
   })
 
-  const registerValidationOptions: IValidationItem[] = [
-    {
-      fieldName: 'fullname',
-      fieldType: EValidationFiedTypes.STRING
-    },
-    {
-      fieldName: 'phone',
-      fieldType: EValidationFiedTypes.STRING
-    },
-    {
-      fieldName: 'email',
-      fieldType: EValidationFiedTypes.STRING
-    },
-    {
-      fieldName: 'city',
-      fieldType: EValidationFiedTypes.STRING
-    },
-    {
-      fieldName: 'birthday',
-      fieldType: EValidationFiedTypes.STRING
-    }
-  ]
-
-  const [createRegisterValidations, setCreateRegisterValidations] = useState({
+  const [createRegisterValidationErrors, setCreateRegisterValidationErrors] = useState({
     fullnameError: false,
     phoneError: false,
     emailError: false,
     cityError: false,
     birthdayError: false
   })
+
+  const registerValidationOptions: IValidationItem[] = useMemo(
+    () => [
+      {
+        fieldName: 'fullname',
+        fieldType: EValidationFiedTypes.STRING
+      },
+      {
+        fieldName: 'phone',
+        fieldType: EValidationFiedTypes.STRING
+      },
+      {
+        fieldName: 'email',
+        fieldType: EValidationFiedTypes.STRING
+      },
+      {
+        fieldName: 'city',
+        fieldType: EValidationFiedTypes.STRING
+      },
+      {
+        fieldName: 'birthday',
+        fieldType: EValidationFiedTypes.STRING
+      }
+    ],
+    []
+  )
 
   const resetRegister = async () => {
     setCreateRegisterDTO({
@@ -173,7 +175,7 @@ const RegisterPage: React.FC = () => {
       const validationResult = validateFormFields(
         registerValidationOptions,
         createRegisterDTO,
-        setCreateRegisterValidations
+        setCreateRegisterValidationErrors
       )
       if (validationResult) {
         await createRegister(createRegisterDTO)
@@ -188,7 +190,7 @@ const RegisterPage: React.FC = () => {
   return (
     <PageContainer>
       <PageLayout>
-        <InfoSection>{/* <Image src={backgroundImage} /> */}</InfoSection>
+        <InfoSection />
 
         <FormSection>
           <FormContainer>
@@ -209,7 +211,7 @@ const RegisterPage: React.FC = () => {
                       value={createRegisterDTO.fullname}
                       onValueChange={event => handleInputChange(event, createRegisterDTO, setCreateRegisterDTO)}
                       children={<User size={20} />}
-                      color={createRegisterValidations.fullnameError ? colors.fourth.light : colors.secondary.dark}
+                      color={createRegisterValidationErrors.fullnameError ? colors.fourth.light : colors.secondary.dark}
                     />
                   </FormItem>
                   <FormItem>
@@ -221,7 +223,7 @@ const RegisterPage: React.FC = () => {
                       value={createRegisterDTO.phone}
                       onValueChange={event => handleInputChange(event, createRegisterDTO, setCreateRegisterDTO)}
                       children={<PhoneCall size={20} />}
-                      color={createRegisterValidations.phoneError ? colors.fourth.light : colors.secondary.dark}
+                      color={createRegisterValidationErrors.phoneError ? colors.fourth.light : colors.secondary.dark}
                     />
                   </FormItem>
                   <FormItem>
@@ -233,7 +235,7 @@ const RegisterPage: React.FC = () => {
                       value={createRegisterDTO.email}
                       onValueChange={event => handleInputChange(event, createRegisterDTO, setCreateRegisterDTO)}
                       children={<Mail size={20} />}
-                      color={createRegisterValidations.emailError ? colors.fourth.light : colors.secondary.dark}
+                      color={createRegisterValidationErrors.emailError ? colors.fourth.light : colors.secondary.dark}
                     />
                   </FormItem>
 
@@ -251,7 +253,7 @@ const RegisterPage: React.FC = () => {
                           setCreateRegisterDTO
                         )
                       }}
-                      color={createRegisterValidations.birthdayError ? colors.fourth.light : colors.secondary.dark}
+                      color={createRegisterValidationErrors.birthdayError ? colors.fourth.light : colors.secondary.dark}
                     />
                   </FormItem>
 
@@ -266,7 +268,7 @@ const RegisterPage: React.FC = () => {
                         handleSelectChange(option, 'city', createRegisterDTO, setCreateRegisterDTO)
                       }
                       children={<Gift size={20} />}
-                      color={createRegisterValidations.cityError ? colors.fourth.light : colors.secondary.dark}
+                      color={createRegisterValidationErrors.cityError ? colors.fourth.light : colors.secondary.dark}
                     />
                   </FormItem>
                 </FormArea>

@@ -1,0 +1,197 @@
+.rdt_Table .rdt_TableHead {
+  z-index: 1 !important;
+}
+
+.rdt_TableHead .rdt_TableHeadRow .rdt_TableCol {
+  padding: 0.5rem 1rem;
+}
+.rdt_TableHead .rdt_TableHeadRow .rdt_TableCol .rdt_TableCol_Sortable {
+  color: #6e6b7b;
+  font-weight: bold;
+  font-style: 0.857rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.rdt_TableHead .rdt_TableHeadRow .rdt_TableCol .rdt_TableCol_Sortable:hover {
+  opacity: 1;
+}
+.rdt_TableHead .rdt_TableHeadRow .rdt_TableCol .rdt_TableCol_Sortable span {
+  margin-left: 0.35rem;
+}
+.rdt_TableHead .rdt_TableHeadRow .rdt_TableCol:first-child .form-check {
+  transform: translateX(-10px);
+}
+.rdt_TableBody .rdt_TableRow {
+  color: #6e6b7b;
+}
+.rdt_TableBody .rdt_TableRow .rdt_TableCell {
+  height: 53px;
+  padding: 0.5rem 1rem;
+}
+.rdt_TableBody .rdt_TableRow .rdt_TableCell .column-action svg {
+  stroke: #6e6b7b;
+}
+.rdt_TableBody .rdt_TableRow .rdt_TableCell .column-action .dropdown-item:hover svg {
+  stroke: #7367f0;
+}
+.rdt_TableBody .rdt_TableRow .rdt_TableCell .column-action .dropdown-item:active svg {
+  stroke: #fff;
+}
+.react-paginate.separated-pagination .page-item:first-child .page-link,
+.react-paginate.separated-pagination .page-item:last-child .page-link {
+  border-radius: 50%;
+}
+.roles-table .rdt_TableHead .rdt_TableHeadRow .rdt_TableCol:first-child .form-check {
+  transform: translateX(0);
+}
+.roles-table .rdt_TableBody .rdt_TableRow .rdt_TableCell:first-child .form-check {
+  transform: translateX(10px);
+}
+
+@media (max-width: 740px) {
+  .permission-header .add-permission {
+    margin-top: 1rem !important;
+  }
+}
+
+.rdt_Pagination select {
+  min-width: 30px;
+}
+.rdt_Pagination select:focus,
+.rdt_Pagination select:active {
+  outline: 0;
+}
+
+.dataTable-filter {
+  max-width: 220px;
+}
+
+.dataTable-select {
+  width: 5rem;
+}
+.dataTable-select:not([multiple='multiple']) {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  background-position: calc(100% - 12px) 10px, calc(100% - 20px) 12px, 100% 0;
+  background-size: 10px 10px, 10px 10px;
+}
+
+.dark-layout .app-user-list header {
+  background-color: red;
+}
+.hlidmt {
+  background-color: red;
+}
+.khKjDK {
+  background-color: red;
+  color: #566a7f;
+}
+.rdt_Table {
+  background: white !important;
+  color: #566a7f;
+}
+.rdt_Table > div:first-child:not(.rdt_TableHead):not(.rdt_TableBody) {
+  color: #566a7f;
+  background-color: red;
+}
+
+.rdt_TableHead .rdt_TableHeadRow {
+  background-color: #e7e3f4;
+  /* background-color: #f3f2f7; */
+  border-top: 1px solid;
+  border-color: #ebe9f1;
+  min-height: 0;
+  height: 38px;
+  border-color: transparent;
+}
+
+.rdt_TableHead .rdt_TableHeadRow .rdt_TableCol {
+  color: #566a7f;
+}
+.rdt_TableHead .rdt_TableHeadRow .rdt_TableCol div[role='button'] {
+  color: #566a7f;
+}
+.rdt_TableHead .rdt_TableHeadRow .rdt_TableCol_Sortable {
+  color: peru;
+}
+.rdt_TableHead .rdt_TableHeadRow .rdt_TableCol_Sortable svg {
+  stroke: peru;
+}
+.rdt_TableBody .expandable-content {
+  background-color: #fcfdfd;
+  color: #566a7f;
+}
+.rdt_TableBody .rdt_TableRow {
+  transition: 0.3s ease-in-out background-color;
+  background-color: #fff;
+  color: #566a7f;
+  border-color: #233446;
+}
+
+.rdt_TableBody .rdt_TableRow:hover {
+  transition: 0.3s ease-in-out background-color;
+  background-color: #e8e8e8;
+  cursor: pointer;
+}
+
+.rdt_TableBody .rdt_TableRow .rdt_TableCell {
+  color: #566a7f;
+}
+.rdt_TableBody .rdt_TableRow .rdt_TableCell .column-action svg {
+  stroke: #566a7f;
+}
+.rdt_TableBody .rdt_TableRow button:hover:not(:disabled) {
+  background-color: royalblue;
+}
+.rdt_TableBody .rdt_TableRow button svg {
+  color: #566a7f;
+}
+.rdt_TableBody .rdt_TableRow .permissions-actions button:hover {
+  background-color: transparent;
+}
+
+.rdt_TableBody {
+  /* min-height: 700px;
+  max-height: 700px; */
+  /* overflow: auto; */
+}
+
+.sc-gicCDI {
+  height: 100%;
+}
+.sc-bZkfAO {
+  height: 100%;
+  max-height: 100% !important;
+}
+.rdt_Pagination {
+  color: #566a7f;
+  border-color: #233446;
+  background-color: #fcfdfd;
+}
+.rdt_Pagination svg {
+  fill: #566a7f;
+}
+.dark-layout .rdt_Pagination {
+  color: #566a7f;
+  background-color: red;
+}
+.dark-layout .rdt_Pagination button svg {
+  fill: #566a7f;
+}
+.dark-layout .rdt_Pagination button[disabled] svg {
+  fill: aquamarine;
+}
+
+.rdt_TableHead .rdt_TableHeadRow .rdt_TableCol .rdt_TableCol_Sortable span {
+  /* color: red; */
+}
+
+.rdt_TableHead {
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  overflow: hidden;
+}
+
+div:has(div:has(.rdt_Table)) {
+  display: none !important;
+}

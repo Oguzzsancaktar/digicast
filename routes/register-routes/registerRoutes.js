@@ -9,6 +9,6 @@ router.post(
   controllers.registerController.createRegister
 )
 
-// router.get('/', controllers.registerController.getRegisters)
+router.get('/', controllers.registerController.getRegisters)
 
 module.exports = router

@@ -1,28 +1,29 @@
 import { useEffect, useMemo } from 'react'
 import { useLogoutMutation, useLoginMutation } from '../services/authService'
-// import { selectAccessToken, selectUserId } from '../store'
+import { useGetUserByIdQuery } from '../services/userService'
+import { selectAccessToken, selectUserId } from '../store'
 import useAccessStore from './useAccessStore'
 
 export const useAuth = () => {
   const { useAppDispatch, useAppSelector } = useAccessStore()
   const dispatch = useAppDispatch()
 
-  // const accessToken = useAppSelector(selectAccessToken)
-  // const userId = useAppSelector(selectUserId)
+  const accessToken = useAppSelector(selectAccessToken)
+  const userId = useAppSelector(selectUserId)
 
-  // useEffect(() => {
-  //   localStorage.setItem('accessToken', accessToken)
-  //   localStorage.setItem('userId', userId)
-  // }, [accessToken, userId])
+  useEffect(() => {
+    localStorage.setItem('accessToken', accessToken)
+    localStorage.setItem('userId', userId)
+  }, [accessToken, userId])
 
-  // const {
-  //   data: userData,
-  //   isLoading: isLoadingLoggedUser,
-  //   error,
-  //   isError
-  // } = useGetUserByIdQuery(userId ?? '', {
-  //   skip: !userId
-  // })
+  const {
+    data: userData,
+    isLoading: isLoadingLoggedUser,
+    error,
+    isError
+  } = useGetUserByIdQuery(userId, {
+    skip: !userId
+  })
 
   const [logoutMutation, { isLoading: isLoadingLogout }] = useLogoutMutation()
 
@@ -30,7 +31,7 @@ export const useAuth = () => {
 
   useEffect(() => {
     if (isLoginSuccessfull) {
-      window.location.href = '/'
+      window.location.href = '/registerList'
     }
   }, [isLoginSuccessfull])
 
@@ -42,16 +43,16 @@ export const useAuth = () => {
   }
 
   return {
-    // loggedUser: useMemo(
-    //   () => ({
-    //     accessToken,
-    //     user: userData,
-    //     isLoading: isLoadingLoggedUser,
-    //     error,
-    //     isError
-    //   }),
-    //   [accessToken, userData, isLoadingLoggedUser, isError, error]
-    // ),
+    loggedUser: useMemo(
+      () => ({
+        accessToken,
+        user: userData,
+        isLoading: isLoadingLoggedUser,
+        error,
+        isError
+      }),
+      [accessToken, userData, isLoadingLoggedUser, isError, error]
+    ),
     tryLogin: { login, isLoginRejected, isLoginSuccessfull },
     logout
   }

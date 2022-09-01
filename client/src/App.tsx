@@ -1,9 +1,13 @@
-import React, { Suspense } from 'react'
+import React, { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import { PrivateRoute } from './routes/PrivateRoute'
 import GlobalStyle from './styles/GlobalStyle'
-import { RegisterPage } from './views'
+import './styles/vendors/react-data-table.css'
+
+const RegisterPage = lazy(() => import('./views/pages/RegisterPage'))
+const LoginPage = lazy(() => import('./views/pages/LoginPage'))
+const RegisterListPage = lazy(() => import('./views/pages/RegisterListPage'))
 
 const App = () => {
   return (
@@ -11,7 +15,16 @@ const App = () => {
       <GlobalStyle />
 
       <Routes>
-        <Route path="/admin" element={<PrivateRoute>Home</PrivateRoute>} />
+        <Route path="/admin" element={<LoginPage />} />
+
+        <Route
+          path="/registerList"
+          element={
+            <PrivateRoute>
+              <RegisterListPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<Navigate to="/register" replace />} />
         <Route path="/" element={<Navigate to="/register" replace />} />
         <Route path="/register" element={<RegisterPage />} />

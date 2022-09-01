@@ -1,5 +1,6 @@
 import { EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions'
 import { createApi } from '@reduxjs/toolkit/query/react'
+import { ILoginCredentials, ILoginResponse } from '../models'
 import { IAxiosBaseQueryFn, axiosBaseQuery } from './AxiosBaseQuery'
 
 const AUTH_API_REDUCER_PATH = 'authApi'
@@ -8,7 +9,7 @@ const AUTH_TAG = 'authTag'
 type IBuilder = EndpointBuilder<IAxiosBaseQueryFn, typeof AUTH_TAG, typeof AUTH_API_REDUCER_PATH>
 
 const login = (builder: IBuilder) => {
-  return builder.mutation<any, any>({
+  return builder.mutation<ILoginResponse, ILoginCredentials>({
     query(credentials) {
       return {
         url: '/auth/login',

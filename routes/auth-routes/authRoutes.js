@@ -9,9 +9,9 @@ router.post(
   controllers.authController.loginController
 )
 router.post(
-  '/register',
-  middlewares.validations.authValidations.registerValidation,
-  controllers.authController.registerController
+  '/signup',
+  middlewares.validations.authValidations.signupValidation,
+  controllers.authController.signupController
 )
 
 router.delete('/logout', middlewares.authMiddlewares.checkAuth, controllers.authController.logoutController)

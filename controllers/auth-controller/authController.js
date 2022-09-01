@@ -6,24 +6,26 @@ const { LOG_TYPES } = require('../../constants/log')
 
 const loginController = async (req, res) => {
   const { body } = req
-  const { email, password } = body
-  const user = await dataAccess.authDataAccess.findUserByEmail({ email })
+  const { username, password } = body
+
+  const user = await dataAccess.authDataAccess.findUserByUsername({ username })
+
   if (!user) {
     return res.status(400).json(utils.errorUtils.errorInstance({ message: 'User not found' }))
   }
+
   const isPasswordValid = await utils.authUtils.comparePassword({
     plainTextPassword: password,
     hashedPassword: user.password
   })
+
   if (!isPasswordValid) {
     return res.status(400).json(utils.errorUtils.errorInstance({ message: 'Invalid password' }))
   }
-  const { accessToken, refreshToken } = await utils.authUtils.generateTokens({
-    userId: user._id.toString(),
-    role: user.role
-  })
 
-  await dataAccess.timeLogDataAccess.createTimeLog({ logType: LOG_TYPES.LOGIN, owner: user._id })
+  const { accessToken, refreshToken } = await utils.authUtils.generateTokens({
+    userId: user._id.toString()
+  })
 
   res.cookie(constants.tokenConstants.TOKEN_ACCESS_KEYS.USER_ACCESS_KEY, accessToken, AUTH_COOKIE_OPTIONS)
   res.cookie(constants.tokenConstants.TOKEN_ACCESS_KEYS.USER_REFRESH_KEY, refreshToken, AUTH_COOKIE_OPTIONS)
@@ -35,15 +37,18 @@ const loginController = async (req, res) => {
   })
 }
 
-const registerController = async (req, res) => {
+const signupController = async (req, res) => {
   const { body } = req
   try {
-    const user = await dataAccess.authDataAccess.findUserByEmail({ email: body.email })
+    const user = await dataAccess.authDataAccess.findUserByUsername({ username: body.username })
+
     if (user) {
       return res.status(400).json(utils.errorUtils.errorInstance({ message: 'User already exists' }))
     }
+
     const hashedPassword = await utils.authUtils.hashPassword({ plainTextPassword: body.password })
     const newUser = await dataAccess.authDataAccess.createUser({ ...body, password: hashedPassword })
+
     res.status(201).json({ user: newUser })
   } catch (e) {
     console.log(e)
@@ -65,6 +70,6 @@ const logoutController = async (req, res) => {
 
 module.exports = {
   loginController,
-  registerController,
+  signupController,
   logoutController
 }

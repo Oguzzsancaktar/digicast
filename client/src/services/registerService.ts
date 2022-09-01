@@ -24,12 +24,10 @@ const createRegister = (builder: IBuilder) => {
 }
 
 const getRegisters = (builder: IBuilder) => {
-  return builder.query<IRegister[], IQueryParams>({
-    query({ search = '', size, status = 1 }) {
+  return builder.query<IRegister[], void>({
+    query() {
       return {
-        url: `/register?search=${search !== undefined ? search : ''}&status=${
-          status !== undefined ? status : ''
-        }&size=${size !== undefined ? size : ''}`,
+        url: `/register`,
         method: 'GET'
       }
     },
